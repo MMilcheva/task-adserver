@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar</title>
+</head>
+<body>
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0" th:fragment="navbar">
+    <a class="navbar-brand d-flex align-items-center px-4 px-lg-5" href="/">
+        <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>Adserver
+        </h2>
+    </a>
+    <button class="navbar-toggler me-4" data-bs-target="#navbarCollapse" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a class="nav-item nav-link active" href="index.html" th:href="@{/}" th:unless="${isAuthenticated}">Home</a>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                           th:if="${isAuthenticated}">Pages</a>
+                        <!--                        <h2 th:text="#{home.welcome} + ' ' + ${session.currentUser}" th:if="${isAuthenticated}">Welcome-->
+                        <!--                            (design)!</h2>-->
+                        <div class="dropdown-menu fade-up m-0">
+                            <a class="dropdown-item" href="#" th:href="@{/tasks/my-tasks}"
+                               th:text="#{tasks.label.my-tasks}">My Tasks</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="nav-item nav-link" href="#" th:href="@{/auth/login}"
+               th:unless="${isAuthenticated}">Login</a>
+
+            <a class="nav-item nav-link" href="#" th:href="@{/auth/logout}" th:if="${isAuthenticated}">Logout</a>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
+<!-- Navbar End ---------------------------------->
+
+

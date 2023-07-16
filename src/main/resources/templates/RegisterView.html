@@ -1,0 +1,165 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--&lt;!&ndash; Start head &ndash;&gt;-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <title>Register user</title>-->
+<!--    <meta content="width=device-width, initial-scale=1.0" name="viewport">-->
+<!--    <meta content="" name="keywords">-->
+<!--    <meta content="" name="description">-->
+
+<!--    &lt;!&ndash; Favicon &ndash;&gt;-->
+<!--    <link href="/img/favicon.ico" rel="icon">-->
+
+<!--    &lt;!&ndash; Google Web Fonts &ndash;&gt;-->
+<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap"-->
+<!--          rel="stylesheet">-->
+
+<!--    &lt;!&ndash; Icon Font Stylesheet &ndash;&gt;-->
+<!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">-->
+
+<!--    &lt;!&ndash; Libraries Stylesheet &ndash;&gt;-->
+<!--    <link href="/lib/animate/animate.min.css" rel="stylesheet">-->
+<!--    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">-->
+<!--    <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet"/>-->
+
+<!--    &lt;!&ndash; Customized Bootstrap Stylesheet &ndash;&gt;-->
+<!--    <link href="/css/bootstrap.min.css" rel="stylesheet">-->
+
+<!--    &lt;!&ndash; Template Stylesheet &ndash;&gt;-->
+<!--    <link href="/css/style.css" rel="stylesheet">-->
+<!--</head>-->
+<!--<body>-->
+
+
+<!--&lt;!&ndash; Navbar Start &ndash;&gt;-->
+<!--<nav th:fragment="navbar" class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">-->
+
+<!--    <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">-->
+<!--        <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>Smart garage</h2>-->
+<!--    </a>-->
+<!--    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse" id="navbarCollapse">-->
+<!--        <div class="navbar-nav ms-auto p-4 p-lg-0">-->
+<!--            <a href="index.html" class="nav-item nav-link active" th:href="@{/}">Home</a>-->
+
+<!--            <a href="#" th:href="@{/car-maintenances}" th:text="#{navigation.all-car-maintenances}"-->
+<!--               class="nav-item nav-link">Services</a>-->
+<!--            <div class="collapse navbar-collapse" id="navbarCollapse">-->
+<!--                <div class="navbar-nav ms-auto p-4 p-lg-0">-->
+<!--                    <div class="nav-item dropdown">-->
+<!--                        <a th:if="${isAuthenticated}" href="#" class="nav-link dropdown-toggle"-->
+<!--                           data-bs-toggle="dropdown">Pages</a>-->
+<!--                        <div class="dropdown-menu fade-up m-0">-->
+
+<!--                            <a href="#" th:href="@{/tasks/my-tasks}" th:text="#{tasks.label.my-tasks}"-->
+<!--                               class="dropdown-item">My tasks</a>-->
+<!--                            <a href="#" th:href="@{/auth/info}" th:text="#{user.navigation.user-info}"-->
+<!--                               class="dropdown-item">User Info</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <a th:href="@{auth/admin}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Panel</a>-->
+<!--            <div class="dropdown-menu fade-up m-0">-->
+
+<!--                <a href="#" th:href="@{/tasks}" th:text="#{navigation.all-tasks}"-->
+<!--                   class="dropdown-item">Tasks</a>-->
+<!--                <a href="#" th:href="@{/auth/register}" th:text="#{navigation.register}" class="dropdown-item">User-->
+<!--                    registration</a>-->
+
+<!--                <a href="#" th:href="@{/users}" th:text="#{navigation.all-users}" class="dropdown-item">Users</a>-->
+<!--                <a href="#" th:href="@{/roles}" th:text="#{navigation.all-roles}" class="dropdown-item">Roles</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--</body>-->
+<!--</html>-->
+<!--&lt;!&ndash; Navbar End &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+
+<!--&lt;!&ndash; Spinner Start &ndash;&gt;-->
+<!--<div id="spinner"-->
+<!--     class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">-->
+<!--    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">-->
+<!--        <span class="sr-only">Loading...</span>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; Spinner End &ndash;&gt;-->
+
+<!--&lt;!&ndash; Page Header Start &ndash;&gt;-->
+<!--<div class="container-fluid page-header mb-5 p-0" style="background-image: url('/img/carousel-bg-2.jpg');">-->
+<!--    <div class="container-fluid page-header-inner py-5">-->
+<!--        <div class="container text-center">-->
+<!--            <h1 class="display-3 text-white mb-3 animated slideInDown">Register User</h1>-->
+<!--            <nav aria-label="breadcrumb">-->
+<!--                <ol class="breadcrumb justify-content-center text-uppercase">-->
+<!--                    <li class="breadcrumb-item"><a href="#" th:href="@{/}">Home</a></li>-->
+<!--                    &lt;!&ndash;          <li class="breadcrumb-item"><a href="#">Vehicles</a></li>&ndash;&gt;-->
+<!--                    <li class="breadcrumb-item text-white active" aria-current="page">Register User</li>-->
+<!--                </ol>-->
+<!--            </nav>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; Page Header End &ndash;&gt;-->
+
+<!--<form action="#" th:action="@{/auth/register}" th:object="${register}" method="post" style="padding: 20px;">-->
+
+<!--    <label th:text="#{user.label.first-name}">First Name</label>-->
+<!--    <br/>-->
+<!--    <input type="text" th:field="*{firstName}" style="margin-bottom: 10px;"/>-->
+<!--    <label class="error" th:errors="*{firstName}">First name error placeholder</label>-->
+<!--    <br/><br/>-->
+
+<!--    <label th:text="#{user.label.last-name}">Last Name</label>-->
+<!--    <br/>-->
+<!--    <input type="text" th:field="*{lastName}" style="margin-bottom: 10px;"/>-->
+<!--    <label class="error" th:errors="*{lastName}">Last name error placeholder</label>-->
+<!--    <br/><br/>-->
+
+
+<!--    <label th:text="#{user.label.role}">Role</label>-->
+<!--    <select th:field="*{roleDescription}" style="margin-bottom: 10px;">-->
+<!--        <option value="">Select Role</option>-->
+<!--        <option value="customer">customer</option>-->
+<!--        <option value="admin">admin</option>-->
+<!--    </select>-->
+<!--    <br/>-->
+<!--    <br/><br/>-->
+
+
+<!--    <input type="submit" value="Register"/>-->
+<!--</form>-->
+
+
+<!--<footer th:replace="fragments/footer :: footer"></footer>-->
+
+<!--&lt;!&ndash; Back to Top &ndash;&gt;-->
+<!--<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>-->
+
+
+<!--&lt;!&ndash; JavaScript Libraries &ndash;&gt;-->
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--<script src="/lib/wow/wow.min.js"></script>-->
+<!--<script src="/lib/easing/easing.min.js"></script>-->
+<!--<script src="/lib/waypoints/waypoints.min.js"></script>-->
+<!--<script src="/lib/counterup/counterup.min.js"></script>-->
+<!--<script src="/lib/owlcarousel/owl.carousel.min.js"></script>-->
+<!--<script src="/lib/tempusdominus/js/moment.min.js"></script>-->
+<!--<script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>-->
+<!--<script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>-->
+
+<!--&lt;!&ndash; Template Javascript &ndash;&gt;-->
+<!--<script src="/js/main.js"></script>-->
+
+<!--</body>-->
+<!--</html>-->

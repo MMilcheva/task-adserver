@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" th:import="org.thymeleaf.util.StringUtils" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Updated Task</title>
+    <link href="../static/Styles.css" rel="stylesheet" th:href="@{/Styles.css}"/>
+</head>
+<body>
+
+<form action="#" method="post" th:action="@{__${requestURI}__}" th:fragment="task-update-form"
+      th:object="${taskSaveRequest}">
+
+    <label th:text="#{task.label.title}">Title</label>
+    <br/>
+    <input th:field="*{title}" type="text"/>
+    <label class="error" th:errors="*{title}">Title name error placeholder</label>
+    <br/><br/>
+
+    <label th:text="#{task.label.description}">Description</label>
+    <br/>
+    <input th:field="*{taskDescription}" type="text"/>
+    <label class="error" th:errors="*{taskDescription}">Description name error placeholder</label>
+    <br/><br/>
+
+    <label th:text="#{task.label.dueDate}">Task due date</label>
+    <br/>
+    <input th:field="*{dueDate}" type="date"/>
+    <label class="error" th:errors="*{dueDate}">Due date error placeholder</label>
+    <br/><br/>
+
+    <!--    <label for="status-select">Status:</label>-->
+    <!--    <select id="status-select" th:field="*{status}">-->
+    <!--        <option value="PENDING">PENDING</option>-->
+    <!--        <option value="COMPLETED">COMPLETED</option>-->
+    <!--        <option value="DISCARDED">DISCARDED</option>-->
+    <!--    </select>-->
+    <!--    <br/>-->
+    <!--    <br/><br/>-->
+
+
+    <label th:text="#{task.label.status}">Status</label>
+    <br/>
+    <select id="status-select" th:field="*{taskStatus}">
+        <!--        <option value="PENDING">PENDING</option>-->
+        <!--        <option value="COMPLETED">COMPLETED</option>-->
+        <!--        <option value="DISCARDED">DISCARDED</option>-->
+        <option th:each="statusOpt : ${T(com.example.taskadserver.models.enums.TaskStatus).values()}"
+                th:text="${statusOpt.getDisplayStatus()}"
+                th:value="${statusOpt}">
+        </option>
+    </select>
+    <br/><br/>
+
+    <input type="submit" value="Save"/>
+</form>
+
+</body>
+</html>
