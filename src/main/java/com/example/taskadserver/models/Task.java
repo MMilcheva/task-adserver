@@ -10,6 +10,7 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Objects;
 
+
 @Entity
 @Table(name = "tasks")
 public class Task {
