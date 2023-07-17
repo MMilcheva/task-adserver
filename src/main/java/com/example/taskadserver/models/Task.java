@@ -45,6 +45,22 @@ public class Task {
     public Task() {
     }
 
+    public Task(Long taskId, String title, String taskDescription, LocalDate dueDate, User user) {
+        this.taskId = taskId;
+        this.title = title;
+        this.taskDescription = taskDescription;
+        this.dueDate = dueDate;
+        this.user = user;
+    }
+
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
+    }
+
+    public void setStatus(TaskStatus status) {
+        this.status = status;
+    }
+
     public String getTitle() {
         return title;
     }

@@ -32,14 +32,28 @@ public class User {
     public User() {
     }
 
-    public User(Long userId, String firstName, String lastName, String username, String password,
-                Set<Task> tasks) {
+    public User(Long userId, String firstName, String lastName, String username, String password) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
-        this.tasks = tasks;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getUserId() {

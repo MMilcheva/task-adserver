@@ -30,6 +30,9 @@ public class TaskFilterOptions {
         this.sortOrder = Optional.ofNullable(sortOrder);
     }
 
+    public TaskFilterOptions() {
+    }
+
     public Optional<Long> getUserId() {
         return userId;
     }
